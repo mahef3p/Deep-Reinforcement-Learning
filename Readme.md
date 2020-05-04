@@ -4,7 +4,9 @@
 
 This project consists of training an agent to navigate (and collect bananas!) in a large, square world.
 
-<center><img src="./images/Banana.png" width=400></center>
+<p align="center">
+<img src="./images/Banana.png" width=400>
+</p>
 
 A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. Thus, the goal of the agent is to collect as many yellow bananas as possible while avoiding blue bananas.
 
