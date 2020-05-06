@@ -75,7 +75,7 @@ In order to execute this project you don't need to install Unity. This is becaus
 * Mac OsX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
 * Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
 
-Then place the file in the `p1` folder and decompress the file.
+Then place the file in the `p1_navigation` folder and decompress the file.
 
 If you prefer to use an environment without visualization, click [here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip) (you should rename the extracted folder to `Banana_Linux`).
 
