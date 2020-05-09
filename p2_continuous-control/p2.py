@@ -76,8 +76,8 @@ def test(dev, weights_file_actor, weights_file_critic, n_episodes=100, max_t=100
     Params
     ======
         dev (string): cpu or gpu
-        weights_file_actor (string): name of the file to save the weights of the actor
-        weights_file_critic (string): name of the file to save the weights of the critic
+        weights_file_actor (string): name of the file to load the weights of the actor
+        weights_file_critic (string): name of the file to load the weights of the critic
         n_episodes (int): number of test episodes that will be performed
     """
     env = UnityEnvironment(file_name='./Reacher_Linux/Reacher.x86_64')
