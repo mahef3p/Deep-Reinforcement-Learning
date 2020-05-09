@@ -16,7 +16,7 @@ LR = 5e-4               # learning rate
 UPDATE_EVERY = 2        # how often to apply the learning algorithm
 UPDATE_TARGET = 4       # how often to update the target network weights
 
-class Agent():
+class Agent:
     """Interacts with and learns from the environment."""
 
     def __init__(self, state_size, action_size, seed, device="cpu"):
@@ -31,8 +31,8 @@ class Agent():
         """
         self.state_size = state_size
         self.action_size = action_size
-        self.seed = random.seed(seed)
         self.device = device
+        random.seed(seed)
 
         # Q-Network
         self.qnetwork_local = QNetwork(state_size, action_size, seed).to(self.device)
@@ -141,8 +141,8 @@ class ReplayBuffer:
         self.memory = deque(maxlen=buffer_size)  
         self.batch_size = batch_size
         self.experience = namedtuple("Experience", field_names=["state", "action", "reward", "next_state", "done"])
-        self.seed = random.seed(seed)
         self.device = device
+        random.seed(seed)
     
     def add(self, state, action, reward, next_state, done):
         """Add a new experience to memory."""

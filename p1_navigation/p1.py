@@ -151,7 +151,7 @@ def main():
         fig = plt.figure()
         fig.add_subplot(111)
         plt.plot(np.arange(len(scores)), scores, color='dodgerblue', label='Score')
-        plt.plot(np.arange(len(scores)-99), averages[99:], color='r', label='Average')
+        plt.plot(np.arange(len(scores)-49), averages[49:], color='r', label='Average')
         plt.legend(loc='best')
         plt.ylabel('Score')
         plt.xlabel('Episode #')
