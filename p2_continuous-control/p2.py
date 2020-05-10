@@ -38,7 +38,7 @@ def train_ddpg(dev, weights_file_actor, weights_file_critic, n_episodes=1000, ma
         env_info = env.reset(train_mode=True)[brain_name]
         agent.reset()  # reset noise for the actions
         states = env_info.vector_observations
-        current_scores = np.zeros(num_agents)  # initialize the average score for all the agents
+        current_scores = np.zeros(num_agents)  # initialize the score for all the agents
         for t in range(max_t):
             actions = agent.act(states)  # process the states of all the agents
 
@@ -110,7 +110,7 @@ def test(dev, weights_file_actor, weights_file_critic, n_episodes=100, max_t=100
     print('Running {} episodes'.format(n_episodes))
     for i_episode in range(1, n_episodes+1):
         env_info = env.reset(train_mode=False)[brain_name]
-        current_scores = np.zeros(num_agents)  # initialize the average score for all the agents
+        current_scores = np.zeros(num_agents)  # initialize the score for all the agents
         states = env_info.vector_observations
         for t in range(max_t):
             actions = agent.act(states, add_noise=False)
@@ -165,7 +165,7 @@ def main():
         fig = plt.figure()
         fig.add_subplot(111)
         plt.plot(np.arange(len(scores)), scores, color='dodgerblue', label='Score')
-        plt.plot(np.arange(len(scores)-99), averages[99:], color='r', label='Average')
+        plt.plot(np.arange(len(scores)-49), averages[49:], color='r', label='Average')
         plt.legend(loc='best')
         plt.ylabel('Score')
         plt.xlabel('Episode #')

@@ -19,7 +19,7 @@ WEIGHT_DECAY = 0        # L2 weight decay
 UPDATE_STEPS = 20       # how often to run the learning algorithm
 NUMBER_UPDATES = 10     # runs of the learning algorithm each time
 
-class Agent():
+class Agent:
     """Interacts with and learns from the environment."""
     
     def __init__(self, state_size, action_size, random_seed, device="cpu"):
@@ -30,11 +30,12 @@ class Agent():
             state_size (int): dimension of each state
             action_size (int): dimension of each action
             random_seed (int): random seed
+            device (string): cpu or gpu
         """
         self.state_size = state_size
         self.action_size = action_size
-        self.seed = random.seed(random_seed)
         self.device = device
+        random.seed(random_seed)
 
         # Actor Network (w/ Target Network)
         self.actor_local = Actor(state_size, action_size, random_seed).to(self.device)
@@ -144,7 +145,7 @@ class OUNoise:
         self.mu = mu * np.ones(size)
         self.theta = theta
         self.sigma = sigma
-        self.seed = random.seed(seed)
+        random.seed(seed)
         self.reset()
 
     def reset(self):
@@ -154,7 +155,7 @@ class OUNoise:
     def sample(self):
         """Update internal state and return it as a noise sample."""
         x = self.state
-        dx = self.theta * (self.mu - x) + self.sigma * np.array([random.random() for i in range(len(x))])
+        dx = self.theta * (self.mu - x) + self.sigma * np.array([np.random.randn() for i in range(len(x))])
         self.state = x + dx
         return self.state
 
@@ -167,13 +168,14 @@ class ReplayBuffer:
         ======
             buffer_size (int): maximum size of buffer
             batch_size (int): size of each training batch
+            device (string): cpu or gpu
         """
         self.action_size = action_size
         self.memory = deque(maxlen=buffer_size)  # internal memory (deque)
         self.batch_size = batch_size
         self.experience = namedtuple("Experience", field_names=["state", "action", "reward", "next_state", "done"])
-        self.seed = random.seed(seed)
         self.device = device
+        random.seed(seed)
     
     def add(self, state, action, reward, next_state, done):
         """Add a new experience to memory."""
