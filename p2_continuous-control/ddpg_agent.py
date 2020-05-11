@@ -145,7 +145,6 @@ class OUNoise:
         self.mu = mu * np.ones(size)
         self.theta = theta
         self.sigma = sigma
-        random.seed(seed)
         self.reset()
 
     def reset(self):
@@ -155,7 +154,9 @@ class OUNoise:
     def sample(self):
         """Update internal state and return it as a noise sample."""
         x = self.state
-        dx = self.theta * (self.mu - x) + self.sigma * np.array([np.random.randn() for i in range(len(x))])
+        # Reviewer comment: You should sample from the standard normal distribution and not from the uniform distribution.
+        # If you don't do that, your noise is highly biased since it tends to accumulate at around 0.6!
+        dx = self.theta * (self.mu - x) + self.sigma * np.random.randn(len(x))
         self.state = x + dx
         return self.state
 
